@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if form.employee_id.data %}Edit Employee{% else %}Add Employee{% endif %}</title>
+</head>
+<body>
+    <h1>{% if form.employee_id.data %}Edit Employee{% else %}Add Employee{% endif %}</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        
+        {% if form.employee_id.data %}
+            <input type="hidden" name="employee_id" value="{{ form.employee_id.data }}">
+        {% endif %}
+        
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}<br>
+            {% for error in form.name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}<br>
+            {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+        <p>
+            {{ form.position.label }}<br>
+            {{ form.position(size=32) }}<br>
+            {% for error in form.position.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+        <p>
+            {{ form.salary.label }}<br>
+            {{ form.salary(size=32) }}<br>
+            {% for error in form.salary.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+        <p><input type="submit" value="Save"></p>
+    </form>
+    
+    <a href="{{ url_for('employee_list') }}">Back to Employee List</a>
+</body>
+</html>
+
