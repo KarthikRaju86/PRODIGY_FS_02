@@ -1,0 +1,12 @@
+/employee_management_system
+├──app.py
+├──forms.py
+├──models.py
+├──templates
+│   ├──add_employee.html
+│   ├──base.html
+│   ├──employee_list.html
+│   ├──login.html
+│   └── register.html
+└── static
+      └── style.css
