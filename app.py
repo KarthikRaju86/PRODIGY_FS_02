@@ -5,8 +5,8 @@ from forms import LoginForm, RegistrationForm, EmployeeForm
 from models import db, User, Employee
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'  # Database configuration
-app.config['SECRET_KEY'] = 'your_secret_key'  # Change this in production
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'  
+app.config['SECRET_KEY'] = 'your_secret_key'  
 db.init_app(app)
 
 # Initialize Flask-Login
@@ -71,7 +71,7 @@ def add_employee():
 @login_required
 def edit_employee(employee_id):
     employee = Employee.query.get_or_404(employee_id)
-    form = EmployeeForm(obj=employee)  # This populates the form with existing data
+    form = EmployeeForm(obj=employee)  
     if form.validate_on_submit():
         employee.name = form.name.data
         employee.email = form.email.data
@@ -99,7 +99,7 @@ def logout():
 
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()  # Create database tables if they don't exist
+        db.create_all()  
     app.run(debug=True)
 
 
